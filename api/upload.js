@@ -5,7 +5,7 @@
 
 const MAX_IMAGE_BYTES = 3 * 1024 * 1024;
 const TYPES = { 'image/png': 'png', 'image/jpeg': 'jpg', 'image/gif': 'gif', 'image/webp': 'webp' };
-const SITE_URL = process.env.SITE_URL || 'https://terminalofslop.com';
+const SITE_URL = process.env.SITE_URL || 'https://terminalofslop.xyz';
 const GATEWAY = 'https://ipfs.io/ipfs/'; // keep this short: the uri is written into the launch transaction
 
 // Very small per-instance rate limit. Put a real one (Vercel Firewall, Upstash) in front for heavy traffic.
