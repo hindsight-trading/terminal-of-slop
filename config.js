@@ -18,7 +18,7 @@ window.TOS_CONFIG = {
   AGENT_API: '',
 
   // Public links
-  SITE_URL: 'https://terminalofslop.com',
+  SITE_URL: 'https://terminalofslop.xyz',
   X_URL: 'https://x.com/',
 
   // IPFS gateway used to show coin images and metadata
