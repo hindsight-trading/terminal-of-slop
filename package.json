@@ -1,0 +1,22 @@
+{
+  "name": "terminal-of-slop",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build:page": "python3 src/build.py",
+    "build:chain": "esbuild src/entry.js --bundle --platform=browser --format=iife --minify --target=es2020 --inject:src/shims.js --define:global=globalThis --outfile=assets/tos-chain.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "@pump-fun/pump-sdk": "^2.0.0",
+    "@solana/web3.js": "^1.99.0",
+    "@solana/spl-token": "^0.4.15",
+    "@solana/spl-token-metadata": "^0.1.6",
+    "buffer": "^6.0.3",
+    "bn.js": "^5.2.5",
+    "bs58": "^6.0.0"
+  }
+}
