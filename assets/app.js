@@ -488,12 +488,12 @@ let aT = 0, blink = 0, cmdIdx = 0, cmdCh = 0, look = 0;
 const bars = Array.from({ length: 18 }, () => Math.random());
 const BL = ' .:-=+*#';
 function drawArt() {
-  const off = look === 0 ? 4 : look === 1 ? 3 : 5; const eye = blink === 0 ? '◉' : '─';
+  const off = look === 0 ? 4 : look === 1 ? 3 : 5; const eye = blink === 0 ? 'O' : '─';
   const cur = aT % 6 < 3 ? '_' : ' ';
   const scr = ['', ' '.repeat(off) + eye + ' '.repeat(8) + eye, '', ' '.repeat(off + 2) + '╰──────╯', '', ' ~$ ' + SCREEN_CMDS[cmdIdx].slice(0, cmdCh) + cur];
-  const left = ['╭' + '─'.repeat(20) + '╮', '│╭' + '─'.repeat(18) + '╮│', ...scr.map(s => '││' + L(s, 18) + '││'), '│╰' + '─'.repeat(18) + '╯│', '│' + L(' ■ □            ═══', 20) + '│', '╰' + '─'.repeat(7) + '╮    ╭' + '─'.repeat(7) + '╯', ' '.repeat(8) + '│    │' + ' '.repeat(8), '   ╭────┴────┴────╮   ', '   ╰──────────────╯   '];
+  const left = ['╭' + '─'.repeat(20) + '╮', '│╭' + '─'.repeat(18) + '╮│', ...scr.map(s => '││' + L(s, 18) + '││'), '│╰' + '─'.repeat(18) + '╯│', '│' + L(' █ ░            ═══', 20) + '│', '╰' + '─'.repeat(7) + '╮    ╭' + '─'.repeat(7) + '╯', ' '.repeat(8) + '│    │' + ' '.repeat(8), '   ╭────┴────┴────╮   ', '   ╰──────────────╯   '];
   const mem = 8 + Math.round(Math.sin(aT / 30) * 2);
-  const leds = i => [0, 1, 2].map(j => ((aT >> (2 + i + j)) & 1) ? '■' : '□').join(' ');
+  const leds = i => [0, 1, 2].map(j => ((aT >> (2 + i + j)) & 1) ? '█' : '░').join(' ');
   const up = Math.floor(aT * 0.14);
   const tm = [Math.floor(up / 3600), Math.floor(up / 60) % 60, up % 60].map(n => String(n).padStart(2, '0')).join(':');
   const right = ['┏' + '━'.repeat(20) + '┓', '┃' + L(' ' + leds(0) + '   ═══════  ·', 20) + '┃', '┣' + '━'.repeat(20) + '┫', '┃' + L(' ' + leds(1) + '   ═══════  ·', 20) + '┃', '┣' + '━'.repeat(20) + '┫', '┃' + L(' cpu', 20) + '┃', '┃ ' + bars.map(b => BL[Math.min(7, Math.floor(b * 8))]).join('') + ' ┃', '┃' + L(' mem', 20) + '┃', '┃ ' + '#'.repeat(mem) + '.'.repeat(18 - mem) + ' ┃', '┃' + L(' uptime ' + tm, 20) + '┃', '┗━━┳' + '━'.repeat(14) + '┳━━┛', '   ┃' + ' '.repeat(14) + '┃   ', '   ┗' + '━'.repeat(14) + '┛   ', ' '.repeat(22)];
